@@ -6,7 +6,7 @@
 * 
 *  Name: ___Travis Liu___ Student ID: ___156740201___ Date: ___3 April, 2023___
 *
-*  Vercel App (Deployed) Link: _____________________________________________________
+*  Vercel App (Deployed) Link: ___https://web422assignment6-snowy.vercel.app/________
 *
 ********************************************************************************/
 
