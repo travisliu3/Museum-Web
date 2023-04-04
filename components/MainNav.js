@@ -31,7 +31,7 @@ export default function MainNav() {
     async function submitForm(e) {
         e.preventDefault();
         setisExpanded(expand => expand = false);
-        setSearchHistory(await addToHistory(`title=true&q=${searchField}`));
+        setSearchHistory(await addToHistory(`title=true&q=${e.target.search.value}`));
         router.push(`/artwork?title=true&q=${e.target.search.value}`)
     }
 
@@ -69,12 +69,15 @@ export default function MainNav() {
                             <Button variant="outline-light" type="submit">Search</Button>
                         </Form>) : ''}&nbsp;
                         {token ? (<Nav>
-                            <NavDropdown active={router.pathname === "/history"} title="User Name" id="basic-nav-dropdown">
+                            <NavDropdown active={router.pathname === "/history"} title={token.userName} id="basic-nav-dropdown">
                                 <Link href="/favourites" passHref legacyBehavior >
                                     <NavDropdown.Item href="/favourites" onClick={handleNavLinkClick}>Favourites</NavDropdown.Item>
                                 </Link>
                                 <Link href="/history" passHref legacyBehavior >
                                     <NavDropdown.Item href="/history" onClick={handleNavLinkClick}>Search History</NavDropdown.Item>
+                                </Link>
+                                <Link href="/" passHref legacyBehavior >
+                                    <NavDropdown.Item href="/" onClick={logout}>Logout</NavDropdown.Item>
                                 </Link>
                             </NavDropdown>
                         </Nav>)

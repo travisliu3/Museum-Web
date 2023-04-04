@@ -10,8 +10,8 @@ import { getHistory } from "../lib/userData";
 
 export default function Login(props) {
 
-    const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
-    const [favouritesList, setFavouritesList] = useAtom(favouritesAtom);
+    const [SearchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
+    const [FavouritesList, setFavouritesList] = useAtom(favouritesAtom);
 
     const [warning, setWarning] = useState("");
     const [user, setUser] = useState("");

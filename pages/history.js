@@ -1,12 +1,13 @@
-import { searchHistoryAtom } from '../store';
+import { searchHistoryAtom, favouritesAtom } from '../store';
 import { useRouter } from 'next/router'
 import { useAtom } from 'jotai';
 import { Card, ListGroup, Button, Col } from 'react-bootstrap';
 import styles from '@/styles/History.module.css';
-import { removeHistory } from '../lib/userData'
+import { removeFromHistory } from '../lib/userData'
 
 export default function History() {
     const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
+    const [favouritesList] = useAtom(favouritesAtom);
 
     let parsedHistory = [];
 

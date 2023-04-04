@@ -7,7 +7,7 @@ import { addToHistory } from '../lib/userData';
 
 export default function AdvancedSearch() {
 
-    const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
+    const [setSearchHistory] = useAtom(searchHistoryAtom);
 
     const router = useRouter();
     const { register, handleSubmit, formState: { errors } } = useForm();

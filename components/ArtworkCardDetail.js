@@ -1,11 +1,10 @@
 import useSWR from 'swr'
 import Error from 'next/error'
-import Link from "next/link"
 import { Card } from 'react-bootstrap'
 import { Button } from 'react-bootstrap'
 import { useAtom } from 'jotai';
 import { favouritesAtom } from '../store';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { addToFavourites } from "../lib/userData";
 import { removeFromFavourites } from "../lib/userData";
 
@@ -15,21 +14,17 @@ export default function ArtworkCardDetail(props) {
     const [showAdded, setShowAdded] = useState(false);
     const { data, error } = useSWR(props.objectID ? `https://collectionapi.metmuseum.org/public/collection/v1/objects/${props.objectID}` : null);
 
+    useEffect(() => {
+        setShowAdded(favouritesList?.includes(props.objectID))
+    }, [favouritesList])
+
     async function favouritesClicked() {
 
         if (showAdded) {
             setFavouritesList(await removeFromFavourites(props.objectID));
-            useEffect(() => {
-                setShowAdded(favouritesList?.includes(objectID))
-            }, [favouritesList])
-
         }
         if (!showAdded) {
             setFavouritesList(await addToFavourites(props.objectID));
-            useEffect(() => {
-                setShowAdded(favouritesList?.includes(objectID))
-            }, [favouritesList])
-
         }
     }
 

@@ -18,7 +18,7 @@ export default function Register(props) {
             await registerUser(user, password, password2);
             router.push("/login");
         } catch (err) {
-            setWarning(warning => warning = err.message);
+            setWarning(err.message);
         }
 
     }
@@ -47,7 +47,7 @@ export default function Register(props) {
                 <br />
                 <Form.Group>
                     <Form.Label>Confirm Password:</Form.Label>
-                    <Form.Control type="password" value={password2} id="password" name="password" onChange={e => setPassword2(e.target.value)} />
+                    <Form.Control type="password" value={password2} id="password2" name="password2" onChange={e => setPassword2(e.target.value)} />
                 </Form.Group  >
                 {warning && <>
                     <br />
